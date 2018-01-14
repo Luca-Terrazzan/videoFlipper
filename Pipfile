@@ -11,6 +11,4 @@ name = "pypi"
 
 [packages]
 
-requests = "*"
-numpy = "*"
 moviepy = "*"
