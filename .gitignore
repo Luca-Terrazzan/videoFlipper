@@ -1,3 +1,6 @@
+# Videos
+*.mp4
+
 # VSCode files
 .vscode
 
