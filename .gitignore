@@ -1,5 +1,6 @@
-# Videos
+# Byproducts
 *.mp4
+*.wav
 
 # VSCode files
 .vscode
