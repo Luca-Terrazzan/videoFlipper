@@ -1,5 +1,6 @@
 # Byproducts
 *.mp4
+*.mp3
 *.wav
 
 # VSCode files
