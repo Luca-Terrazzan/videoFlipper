@@ -28,6 +28,6 @@ mp3.export(projectFolder + editedAudioFileName + '.mp3', 'mp3')
 # Save the output
 video.write_videofile(
     projectFolder + editedVideoFileName,
-    remove_temp   = True,
-    audio         = projectFolder + editedAudioFileName + '.mp3'
+    remove_temp = True,
+    audio       = projectFolder + editedAudioFileName + '.mp3'
 )
