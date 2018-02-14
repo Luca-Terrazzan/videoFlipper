@@ -7,27 +7,38 @@ from librosa.effects import pitch_shift
 # Conversion
 from pydub import AudioSegment
 
-projectFolder = '/Users/luca.terrazzan/Documents/workspace/videoFlipper/'
-videoFolder = 'videos/original/'
-editedAudioFileName = 'audiotrack.wav'
-editedVideoFileName = 'videotrack.mp4'
 
-# Mirror the video
-video = VideoFileClip(projectFolder + videoFolder + 'test.mp4')
-video = mirror_x(video)
+def start():
+    projectFolder = '/Users/luca.terrazzan/Documents/workspace/videoFlipper/'
+    videoFolder = 'videos/original/'
+    editedAudioFileName = 'audiotrack.wav'
+    editedVideoFileName = 'videotrack.mp4'
 
-# Shift the pitch up a semitone
-audio, sr = librosa.load(projectFolder + videoFolder + 'test.mp4')
-pitchTest = pitch_shift(audio, sr, 1)
-librosa.output.write_wav(projectFolder + editedAudioFileName, pitchTest, sr)
+    # Mirror the video
+    video = VideoFileClip(projectFolder + videoFolder + 'test.mp4')
+    video = mirror_x(video)
 
-# Convert the shifted audio back to .mp3
-mp3 = AudioSegment.from_wav(projectFolder + editedAudioFileName)
-mp3.export(projectFolder + editedAudioFileName + '.mp3', 'mp3')
+    # Shift the pitch up a semitone
+    audio, sr = librosa.load(projectFolder + videoFolder + 'test.mp4')
+    pitchTest = pitch_shift(audio, sr, 1)
+    librosa.output.write_wav(projectFolder + editedAudioFileName, pitchTest, sr)
 
-# Save the output
-video.write_videofile(
-    projectFolder + editedVideoFileName,
-    remove_temp = True,
-    audio       = projectFolder + editedAudioFileName + '.mp3'
-)
+    # Convert the shifted audio back to .mp3
+    mp3 = AudioSegment.from_wav(projectFolder + editedAudioFileName)
+    mp3.export(projectFolder + editedAudioFileName + '.mp3', 'mp3')
+
+    # Save the output
+    video.write_videofile(
+        projectFolder + editedVideoFileName,
+        remove_temp = True,
+        audio       = projectFolder + editedAudioFileName + '.mp3'
+    )
+
+def mirror(path):
+    return mirror_x(VideoFileClip(path))
+
+def saveVideo(video, outputDir):
+    video.write_videofile(
+        outputDir,
+        remove_temp = True
+    )
