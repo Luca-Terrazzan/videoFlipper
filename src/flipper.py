@@ -42,3 +42,6 @@ def saveVideo(video, outputDir):
         outputDir,
         remove_temp = True
     )
+
+def increasePitch():
+    return false
