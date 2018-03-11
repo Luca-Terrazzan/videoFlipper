@@ -25,6 +25,10 @@ def saveVideo(video, audio, outputDir):
         audio       = audio
     )
 
+    # Close files
+    video.reader.close()
+    video.audio.reader.close_proc()
+
 def increasePitch(path, fileName, outputDir):
     """Increased a video segment's pitch by one semitone by extracting its audio track and saving it as
     a temporary external file
